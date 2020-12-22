@@ -1,0 +1,14 @@
+import pytube
+url = ' '      #paste the youtube link
+yt = pytube.YouTube(url)
+
+'''
+streams = yt.streams.all()
+for i in streams:
+        print(i)          #all the available streams 
+'''
+
+video = yt.streams.get_by_itag(22)
+
+video.download('C:/')   #give the download path
+print("*****Download Complete*****")
