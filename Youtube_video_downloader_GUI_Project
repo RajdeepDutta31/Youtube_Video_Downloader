@@ -1,0 +1,33 @@
+import pytube
+from tkinter import *
+my_root = Tk()
+my_root.title("Youtube Downloader")
+my_root.geometry("400x400")
+my_root.config(bg="black")
+
+l1 = Label(text = "Youtube Video Downloader",relief = "groove",bg="black",fg="cyan")
+l1.config(font=("Arial",18,"bold"))
+l1.pack(pady=5)
+
+l2 = Label(text="Enter the video link........",bg="black",fg="cyan")
+l2.pack(pady=20)
+
+entry = Entry(width=40)
+entry.pack()
+
+def downld():
+    url = entry.get()
+    yt = pytube.YouTube(url)
+    video = yt.streams.get_by_itag(22)
+    video.download('C:/Users/LENOVO/Desktop/You_downloader')
+    l4 = Label(text ="Download Successful",bg="black",fg="cyan")
+    l4.pack(side=TOP)
+
+btn = Button(text="Download", command = downld, bg="red")
+btn.pack(pady=70)
+
+l3 = Label(text=" ** The default download path is C:/Users/LENOVO/Desktop/You_downloader ", bg= "black", fg="white")
+l3.config(font=("Arial",8))
+l3.pack(side="bottom")
+
+my_root.mainloop()
